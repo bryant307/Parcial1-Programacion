@@ -59,36 +59,36 @@ class Recepcionista:
         for i, habitacion in enumerate(self.habitaciones, start=1):
             print(f"{i}. {habitacion.tipo} - {habitacion.precio_por_noche} $ por noche")
 
-    # Método para mostrar los servicios extras disponibles
+   
     def mostrar_servicios_extras(self):
         print("Servicios extra disponibles:")
         for i, servicio in enumerate(self.servicios_extras, start=1):
             print(f"{i}. {servicio['nombre']} - {servicio['precio']} $")
 
-    # Método para crear un nuevo cliente solicitando sus datos
+    
     def crear_cliente(self):
         nombre = input("Ingrese su nombre: ")
-        dni = input("Ingrese su DNI: ")
+        dni = input("Ingrese su Documento: ")
         noches = int(input("Ingrese el número de noches: "))
         return Cliente(nombre, dni, noches)
 
-    # Método para que el cliente elija una habitación
+    
     def elegir_habitacion(self):
-        self.mostrar_habitaciones()  # Mostramos las opciones de habitaciones
+        self.mostrar_habitaciones()  
         eleccion = int(input("Elija una habitación (número): ")) - 1
         return self.habitaciones[eleccion]
 
-    # Método para que el cliente elija los servicios extras
+    
     def elegir_servicios_extras(self, cliente):
         while True:
-            self.mostrar_servicios_extras()  # Mostramos las opciones de servicios extras
+            self.mostrar_servicios_extras()  
             eleccion = int(input("Elija un servicio extra (número, 0 para terminar): "))
-            if eleccion == 0:  # Si elige 0, termina la selección de servicios extras
+            if eleccion == 0: 
                 break
             servicio = self.servicios_extras[eleccion - 1]
-            cliente.agregar_servicio_extra(servicio)  # Agregamos el servicio extra al cliente
+            cliente.agregar_servicio_extra(servicio)  
 
-    # Método para generar y mostrar la factura al cliente
+    
     def generar_factura(self, cliente, habitacion):
         factura = Factura(cliente, habitacion)
         factura.mostrar_factura()
