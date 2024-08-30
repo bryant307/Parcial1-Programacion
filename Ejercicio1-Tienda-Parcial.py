@@ -24,24 +24,23 @@ class Tienda:
             else:
                 print(f"Error: {producto} no disponible o cantidad insuficiente.")
                 return
-        
         vuelto = pago - total
         if vuelto < 0:
-            print("Pago menor que el total de la compra.")
+            print('Pago menor que el total de la compra')
             return
         
         self.ventas.append((productos_comprados, total, pago, vuelto))
-        print(f"Total de la venta: ${total:.2f}")
-        print(f"Vuelto: ${vuelto:.2f}")
+        print(f'Total de la venta: ${total:.2f}')
+        print(f'Vuelto: ${vuelto:.2f}')
     
     def mostrar_inventario(self): #Funcion para mostrar inventario
-        print("Inventario:")
+        print('Inventario:')
         print('Productos disponibles')
         for producto, (cantidad, precio) in self.inventario.items():
             print(f"{producto}: Cantidad={cantidad}, Precio unitario=${precio:.2f}")
 
     def mostrar_ventas(self):
-        print("Ventas registradas:")
+        print('Ventas registradas:')
         for venta in self.ventas:
             productos, total, pago, vuelto = venta
             print(f"Productos: {productos}, Total: ${total:.2f}, Pago: ${pago:.2f}, Vuelto: ${vuelto:.2f}")
@@ -81,7 +80,6 @@ def menu(tienda):
                     break
                 cantidad = int(input("Ingrese la cantidad: "))
                 productos_comprados[producto] = cantidad
-            
             pago = float(input("Ingrese el monto pagado por el cliente: "))
             tienda.registrar_venta(productos_comprados, pago)
         
@@ -100,3 +98,6 @@ def menu(tienda):
 
 tienda = Tienda()
 menu(tienda)
+
+"""La solucion que brinde es sencilla, la nina Mary podra elegir entre 5 opciones para realizar sus transacciones de
+    manera facil y sencilla"""
