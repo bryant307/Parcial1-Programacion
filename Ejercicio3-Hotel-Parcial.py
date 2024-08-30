@@ -5,34 +5,31 @@ class Habitacion:
 
 # Definimos la clase Cliente para manejar los detalles del cliente
 class Cliente:
-    def __init__(self, nombre, dni, noches):
-        self.nombre = nombre  # Nombre del cliente
-        self.dni = dni  # DNI del cliente
-        self.noches = noches  # Número de noches que se quedará el cliente
-        self.servicios_extras = []  # Lista para almacenar los servicios extras que el cliente solicita
+    def __init__(self, nombre, dui, noches):
+        self.nombre = nombre  
+        self.dui = dui
+        self.noches = noches  
+        self.servicios_extras = []  
 
     # Método para agregar un servicio extra a la lista del cliente
     def agregar_servicio_extra(self, servicio):
         self.servicios_extras.append(servicio)
 
-# Definimos la clase Factura para manejar el cálculo y la presentación de la factura
 class Factura:
     def __init__(self, cliente, habitacion):
-        self.cliente = cliente  # Cliente al que se le va a emitir la factura
-        self.habitacion = habitacion  # Habitación seleccionada por el cliente
+        self.cliente = cliente  
+        self.habitacion = habitacion
 
-    # Método para calcular el total de la factura
+    
     def calcular_total(self):
-        # Costo de la habitación multiplicado por el número de noches
         costo_habitacion = self.habitacion.precio_por_noche * self.cliente.noches
-        # Costo total de los servicios extras
         costo_servicios = sum(servicio['precio'] for servicio in self.cliente.servicios_extras)
         return costo_habitacion + costo_servicios  # Retorna el total de la factura
 
     # Método para mostrar la factura detallada
     def mostrar_factura(self):
         print(f"Factura para {self.cliente.nombre}")
-        print(f"DNI: {self.cliente.dni}")
+        print(f"Documento: {self.cliente.dui}")
         print(f"Tipo de habitación: {self.habitacion.tipo}")
         print(f"Noches: {self.cliente.noches}")
         print(f"Precio por noche: {self.habitacion.precio_por_noche} $")
@@ -96,7 +93,7 @@ class Recepcionista:
         factura = Factura(cliente, habitacion)
         factura.mostrar_factura()
 
-# Función principal que controla el flujo del programa
+
 def main():
     recepcionista = Recepcionista()
     cliente = recepcionista.crear_cliente()
@@ -104,6 +101,6 @@ def main():
     recepcionista.elegir_servicios_extras(cliente)
     recepcionista.generar_factura(cliente, habitacion)
 
-# Verificamos si el archivo se está ejecutando directamente para llamar a la función principal
+
 if __name__ == "__main__":
     main()
